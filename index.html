@@ -1,0 +1,68 @@
+<!DOCTYPE html> 
+<html>
+	<head>
+		<!-- This is a comment tag -->
+		<meta charset="UTF-8" />
+		<title>Camera Shop</title>
+		<link rel="stylesheet" href="siteLayout.css" type="text/css" media="screen,projection" />
+		<link rel="stylesheet" href="siteTheme.css" type="text/css" media="screen,projection" />
+		<style>
+			/* For styling specific to this page */
+			#mainBody {
+				min-height: 615px;
+			}
+		</style>
+		<script src="jquery-2.2.0.min.js"></script>
+		<script src='CameraShop.js'></script>
+		<script>
+			
+			var timer;
+		
+			$(document).ready(function() {
+				
+				// set a timed function call to wait for xml to load
+				timer = window.setInterval(function() {
+				
+					if (($products === null) && ($carousel === null))
+					{
+						return;
+					}
+					else
+					{
+						// Remove timer
+						window.clearInterval(timer);
+						
+						// Get the images
+						preloadCarouselImages();
+					
+						// Populate the nav bar
+						populateNav("navmenu");
+					
+						// Start the carousel
+						startCarousel("mainBody");
+					}
+				
+				}, 100);
+				
+			});
+		</script>
+	</head>
+	<body>
+		<header>
+					<header class="main-header" role="banner">
+            <img src="text.jpg" alt="Camera Shop Logo" align="center" src="logo.jpg" alt="Camera Shop Logo" style="width:900px;height:100px"/> 
+           </header>
+		   <header>
+			<div id="searchBar"><form action="results.html">
+				Search: <input type="text" name='searchTerm' id="searchTerm" max-length="15"><input type="submit" id="theSubmit" value="Submit">
+			</form></div>
+		</header>
+		<ul class="navmenu">
+		</ul>
+		<div id="mainBody">
+		</div>
+		<footer>
+			<p>&copy Camera Shop 2016</p>
+		</footer>
+	</body>
+</html>

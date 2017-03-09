@@ -1,0 +1,107 @@
+/* This is a CSS comment */
+* {
+	padding:0;
+	margin:0;
+}
+body {
+	font-size: 100%;
+}
+header, div, .navmenu, footer {
+	border-width: 1px;
+	margin: 5px;
+}
+header {
+	min-height: 75px;
+	display: center;
+}
+header h1 {
+	display: inline-block;
+	display: center;
+}
+header img {
+     width: 100px;
+	 display:block;
+	 margin-left: auto;
+	 margin-right: auto;
+	 }
+#searchBar {
+	display: inline-block;
+	float: right;
+	padding: 2px 5px;
+	vertical-align: middle;
+}
+#breadCrumb {
+	border-width: 0;
+	margin: 5px 0 2px 5px;
+}
+#breadCrumb img {
+	width:20px;
+}
+#theSubmit {
+	padding: 3px 5px;
+}
+.menuItem {
+	list-style-type: none;
+	border-width: 0 0 1px 0;
+	padding: 5px;
+	width: 150px;
+}
+.navmenuItem {
+	display: inline-block;
+	text-align: center;
+	border-width: 1px;
+	width: 70px;
+}
+.submenuItem {
+	width: 300px;
+}
+.subMenu {
+	display: none;
+    position: absolute;
+    margin-left: -3px;
+    margin-top: 2px;
+    border-width: 1px 1px 0 1px;
+    z-index: 1024;
+}
+.menuItemHover {
+	display: block;
+}
+.subsubMenu {
+	margin-top: -1.2em;
+    left: 99%;
+}
+.anchorMenuItem {
+	display: block;
+}
+h1, footer p {
+	text-align: center;
+}
+img 1{
+     position: absolute;
+     left: 300px;
+     top: 0px;
+
+ }
+#mainBody {
+	position: relative;
+}
+.titleStart, .priceStart {
+	position: absolute;
+	padding: 5px 20px;
+	font-size: 150%;
+	-ms-transform: skewX(-20deg); /* IE 9 */
+    -webkit-transform: skewX(-20deg); /* Safari */
+    transform: skewX(-20deg); /* Standard syntax */
+    border-size: 0;
+}
+.priceStart {
+	width: 30%;
+	top: 2.5%;
+	left: -500px;
+}
+.titleStart {
+	width: 40%;
+	right: -500px;
+	top: 80%;
+	text-align: right;
+}

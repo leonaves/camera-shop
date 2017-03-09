@@ -1,0 +1,135 @@
+<!DOCTYPE html> 
+<html>
+	<head>
+		<!-- This is a comment tag -->
+		<meta charset="UTF-8" />
+		<title>Camera Shop</title>
+		<link rel="stylesheet" href="siteLayout.css" type="text/css" media="screen,projection" />
+		<link rel="stylesheet" href="siteTheme.css" type="text/css" media="screen,projection" />
+		<style>
+			/* For styling specific to this page */
+			#mainBody {
+				min-height: 615px;
+			}
+		</style>
+		<script src="jquery-2.2.0.min.js"></script>
+		<script src='CameraShop.js'></script>
+		<script>
+		
+			var timer;
+		
+			$(document).ready(function() {
+				
+				// set a timed function call to wait for xml to load
+				timer = window.setInterval(function() {
+				
+					if (($products === null) && ($sResults === null))
+					{
+						// Don't do anything... Still waiting
+						return;
+					}
+					else
+					{
+						// Remove timer
+						window.clearInterval(timer);
+					
+						// Populate the nav bar
+						populateNav("navmenu");
+
+						// Check if there is an OLDid
+						if (vars["OLDid"] != undefined)
+						{
+							// Add it to breadcrumb
+							$('#breadCrumb').append(' - <a href="product.html?id=' + vars['OLDid'] + '">Return to product page</a>');
+							
+							// Put the OLDid in the searchBar form
+							$("#hiddenID").attr("value", vars["OLDid"]);
+						}
+						
+						// Add the search term back into the search bar
+						$("#searchTerm").attr("value", vars['searchTerm']);
+						
+						if ($sResults.find("product").length > 0)
+						{
+							// We have some search results
+							/******************************************************
+							 **      YOUR CODE GOES BELOW HERE !!!!!!!!!!!!!!!   **
+							 ******************************************************/
+							// The products are in $sResults
+					
+							const products = $sResults[0].querySelectorAll('product');
+
+							products.forEach(function (product) {
+							  var code = product.querySelector('id').textContent;
+                              var category = product.getAttribute('top-level-category');
+                              var type = product.getAttribute('sub-level-category');
+                              var title = product.querySelector('title').textContent;
+                              var brand = product.querySelector('brand').textContent;
+                              var price = product.querySelector('price').textContent;
+                              var link = '/product.html?id=' + code + '&searchTerm=' + vars['searchTerm'];
+
+                              var resultRow = document.createElement('tr');
+                              var tbody = document.querySelector('#mainBody table tbody');
+                              tbody.appendChild(resultRow);
+                              resultRow.innerHTML = '<td>' + code + '</td>';
+                              resultRow.innerHTML += '<td>' + category + '</td>';
+                              resultRow.innerHTML += '<td>' + type + '</td>';
+                              resultRow.innerHTML += '<td>' + title + '</td>';
+                              resultRow.innerHTML += '<td>' + brand + '</td>';
+                              resultRow.innerHTML += '<td>' + price + '</td>';
+                              resultRow.innerHTML += '<td><a href="' + link + '">Go</a></td>';
+                            });
+					
+							/** Don't change any jQuery code below here **/
+						}
+						else
+						{
+							// We don't have any results
+							// Hide the table
+							$("#mainBody").find("table").hide();
+							$("#mainBody").append("<h3>There are no search results. </h3>");
+						}
+					}
+				
+				}, 100);
+				
+			});
+
+		</script>
+	</head>
+	<body>
+				<header class="main-header" role="banner">
+           <img src="text.jpg" alt="Camera Shop Logo" align="center" src="logo.jpg" alt="Camera Shop Logo" style="width:900px;height:100px"/> 
+           </header>
+		   <header>
+			<div id="searchBar"><form action="results.html">
+				<input type="hidden" name="OLDid" id="hiddenID" />
+				Search: <input type="text" name="searchTerm" id="searchTerm" max-length="15"><input type="submit" id="theSubmit" value="Submit">
+			</form></div>
+			<div id="breadCrumb"><a href="index.html"><img src="home.jpg" align="left" style="width:100px;height:100px" alt="The home button" /></a></div>
+		</header>
+		<ul class="navmenu">
+		</ul>
+		<div id="mainBody">
+			<table>
+				<thead>
+					<tr>
+						<th>Product Code</th>	<!-- This is the ID -->
+						<th>Product Category</th>  <!-- This is the top-level-category -->
+						<th>Product Type</th>  <!-- This is the sub-level-category -->
+						<th>Title</th>
+						<th>Brand</th>
+						<th>Price</th>
+						<th>Link</th>
+					<tr>
+				</thead>
+				<tbody>
+					<!-- Your table of results goes in the body of the table -->
+				</tbody>
+			</table>
+		</div>
+		<footer>
+			<p>&copy Camera Shop 2016</p>
+		</footer>
+	</body>
+</html>

@@ -1,0 +1,54 @@
+body {
+	font-family: Arial, Verdana, sans-serif;
+	font-style: normal;
+	background-color: white;
+}
+header, div, .navmenu, footer {
+	border-color: black;
+	border-style: solid;
+}
+#theSubmit {
+background-color: darkgrey; color: grey;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: right;
+    font-size: 16px;
+	border-radius: 12px;
+}
+.menuItem, .subMenu {
+	background-color: lightblue;
+	color: white;
+	border-color: blue;
+	border-style: solid;
+}
+.navmenuItem {
+	background-color: blue;
+	border-color: lightblue;
+	border-style: solid;
+}
+.anchorMenuItem {
+	background-color: none;
+	color: white;
+}
+.anchorMenuItem {
+    text-decoration: none;
+}
+.chosenItem {
+	background-color: lightgrey;
+}
+h1, footer p {
+	color: blue;
+}
+.titleStart, .priceStart {
+	border-color: none;
+	background-color: red;
+	color: white;
+	opacity: 0.75;
+}
+
+
+
+	
